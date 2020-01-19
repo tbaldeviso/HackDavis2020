@@ -12,7 +12,6 @@ body{
     background-color: beige;
     display: block;
     font-family: 'MixModernSolid';
-    font-size: larger;
 }
 
 a {
@@ -25,6 +24,7 @@ h1 {
     margin-left: 26%;
     position: absolute;
     font-family: 'MixModernSolid';
+    font-size: xx-large;
 }
 img {
     top: 42%;
@@ -45,18 +45,16 @@ input[type=file] {
     color: black;
     display: block;
     font-family: 'MixModernSolid';
-    font-size: larger;
 }
 
 input[type=submit] {
     top: 43%;
-    margin-left: 50%;
+    margin-left: 53%;
     position: absolute;
     color: white;
     background-color: black;
     display: block;
     font-family: 'MixModernSolid';
-    font-size: larger;
 }
 
 div {
@@ -71,7 +69,7 @@ div {
 }
 
 span {
-    top: 60%;
-    margin-left: 35%;
+    top: 55%;
+    margin-left: 26%;
     position: absolute;
 }

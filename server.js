@@ -15,12 +15,12 @@ var app = express();
 
 // Simple upload form
 var form = '<!DOCTYPE HTML><html><body>' +
-  "<h1>Recycle Buddy</h1>" +
   `<link rel="stylesheet" type="text/css" href="css/style.css" />`+
+  "<h1>Recycle Buddy</h1>" +
+  `<span>Upload an image of waste to be categorized!</span>` +
   "<form method='post' action='/upload' enctype='multipart/form-data'>" +
   "<div><input type='file' name='image'/></div>" +
   "<input type='submit' /></form>" +
-  `<br><span>Upload an image of waste to be categorized!</span>` +
   '</body></html>';
 
 app.get('/', function(req, res) {
@@ -37,6 +37,7 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
     .labelDetection(req.file.path)
     .then(results => {
         var labels = results[0].labelAnnotations;
+        console.log(labels)
         res.writeHead(200, {
             'Content-Type': 'text/html'
           });
@@ -48,7 +49,7 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
 
           // List of regex per category
           const recycleList = [/bottle/i, /can(\s|$)/i];
-          const compostList = [/food/i, /soil/i, /plant/i, /leaves/i, /grass/i];
+          const compostList = [/paper/i, /food/i, /soil/i, /plant/i, /leaves/i, /grass/i];
           const landfillList = [/foil/i, /wrapper/i, /plastic/i, /lid/i];
   
           // Filter out any labels not pertaining to any of the categories
