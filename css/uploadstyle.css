@@ -33,12 +33,3 @@ img {
     vertical-align: baseline;
     width: 25%;
 }
-
-.logo {
-    background-repeat: no-repeat;
-    background-attachment: fixed;
-    vertical-align: baseline;
-
-    width: 300px;
-    height: 300px;
-}

@@ -8,7 +8,7 @@ var upload = multer({dest: 'uploads/'});
 // Set up auth
 var vision = require('@google-cloud/vision');
 const client = new vision.ImageAnnotatorClient({
-    keyFilename: '../Hack Davis 2020-6d0daaf83738.json'
+    keyFilename: '../key.json'
 });
 
 var app = express();
@@ -45,7 +45,7 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
           res.write(`<!DOCTYPE HTML><html><body><link rel="stylesheet" type="text/css" href="css/uploadstyle.css" /><h1>Waste Bud</h1>`);
 
           // Base64 the image so we can display it on the page
-          res.write('<img width=150 class="center" src="' + base64Image(req.file.path) + '"><br>');
+          res.write('<img width=150 class="center" src="' + base64Image(req.file.path) + '">');
 
           // List of regex per category
           const recycleList = [
@@ -113,11 +113,11 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
 
           // Waste category has the highest score
           if (recyclescore > compostscore && recyclescore > landfillscore) {
-            res.write(`<img class="logo" src="./images/Logos/RecycleLogo.png"> </img> <span>Recycle</span>`);
+            res.write(`<img class="logo" src="./images/Logos/RecycleLogo.png"> </img><br> <span>Recycle</span>`);
           } else if (compostscore > recyclescore && compostscore > landfillscore) {
-            res.write(`<img class="logo" src="./images/Logos/CompostLogo.png"> </img> <span>Compost</span>`);
+            res.write(`<img class="logo" src="./images/Logos/CompostLogo.png"> </img><br> <span>Compost</span>`);
           } else if (landfillscore > compostscore && landfillscore > recyclescore) {
-            res.write(`<img class="logo" src="./images/Logos/LandfillLogo.png"> </img> <span>Landfill</span>`);
+            res.write(`<img class="logo" src="./images/Logos/LandfillLogo.png"> </img><br> <span>Landfill</span>`);
           } else if (recyclescore == 0 && landfillscore == 0 && compostscore == 0){
             res.write(`<span>Cannot identify category</span>`);
           }
