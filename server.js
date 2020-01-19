@@ -113,11 +113,11 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
 
           // Waste category has the highest score
           if (recyclescore > compostscore && recyclescore > landfillscore) {
-            res.write(`<span>Recycle</span>`);
+            res.write(`<img class="logo" src="./images/Logos/RecycleLogo.png"> </img> <span>Recycle</span>`);
           } else if (compostscore > recyclescore && compostscore > landfillscore) {
-            res.write(`<span>Compost</span>`);
+            res.write(`<img class="logo" src="./images/Logos/CompostLogo.png"> </img> <span>Compost</span>`);
           } else if (landfillscore > compostscore && landfillscore > recyclescore) {
-            res.write(`<span>Landfill</span>`);
+            res.write(`<img class="logo" src="./images/Logos/LandfillLogo.png"> </img> <span>Landfill</span>`);
           } else if (recyclescore == 0 && landfillscore == 0 && compostscore == 0){
             res.write(`<span>Cannot identify category</span>`);
           }
@@ -137,6 +137,7 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
 
 // Include css folder
 app.use('/css',express.static(__dirname +'/css'));
+app.use('/images',express.static(__dirname +'/images'));
 
 // Listen to local host on port 8080
 app.listen(8080);
