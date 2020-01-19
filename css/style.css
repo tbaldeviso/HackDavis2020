@@ -69,3 +69,9 @@ div {
     font-family: 'MixModernSolid';
     font-size: larger;
 }
+
+span {
+    top: 60%;
+    margin-left: 35%;
+    position: absolute;
+}
