@@ -67,11 +67,8 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
               /bread/i,
               /pasta/i,
               /vegetable/i,
-              /food/i,
-              /soil/i,
-              /plant/i,
-              /leaves/i,
-              /grass/i
+              /food$/i,
+              /fruit/i
           ];
           const landfillList = [
               /cigarette/i,
