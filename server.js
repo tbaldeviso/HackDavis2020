@@ -48,9 +48,43 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
           res.write('<img width=200 class="center" src="' + base64Image(req.file.path) + '"><br>');
 
           // List of regex per category
-          const recycleList = [/bottle/i, /can(\s|$)/i];
-          const compostList = [/paper/i, /food/i, /soil/i, /plant/i, /leaves/i, /grass/i];
-          const landfillList = [/foil/i, /wrapper/i, /plastic/i, /lid/i];
+          const recycleList = [
+              /bottle/i,
+              /can(\s|$)/i,
+              /lid/i,
+              /plastic/i,
+              /cardboard/i,
+              /paper/i,
+              /linen/i,
+              /fabric/i,
+              /rag/i
+          ];
+          const compostList = [
+              /produce/i,
+              /cuisine/i,
+              /meat/i,
+              /egg/i,
+              /bread/i,
+              /pasta/i,
+              /vegetable/i,
+              /food/i,
+              /soil/i,
+              /plant/i,
+              /leaves/i,
+              /grass/i
+          ];
+          const landfillList = [
+              /cigarette/i,
+              /ceramic/i,
+              /styrofoam/i,
+              /wood/i,
+              /diaper/i,
+              /rubber\sband/i,
+              /dish/i,
+              /glass/i,
+              /foil/i,
+              /wrapper/i
+          ];
   
           // Filter out any labels not pertaining to any of the categories
           var recycle = labels.filter(label => recycleList.some(function(x){
@@ -79,7 +113,7 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
 
           // Waste category has the highest score
           if (recyclescore > compostscore && recyclescore > landfillscore) {
-            res.write(`<span>Cans and Bottles</span>`);
+            res.write(`<span>Recycle</span>`);
           } else if (compostscore > recyclescore && compostscore > landfillscore) {
             res.write(`<span>Compost</span>`);
           } else if (landfillscore > compostscore && landfillscore > recyclescore) {
