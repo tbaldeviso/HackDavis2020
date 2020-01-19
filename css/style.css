@@ -50,7 +50,7 @@ input[type=file] {
 
 input[type=submit] {
     top: 43%;
-    margin-left: 59%;
+    margin-left: 50%;
     position: absolute;
     color: white;
     background-color: black;
