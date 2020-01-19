@@ -1,0 +1,26 @@
+@font-face {
+    font-family:"MixModernOutline";
+    src: url("MixModernOutline.ttf") format("truetype");
+}
+
+@font-face {
+    font-family:"MixModernSolid";
+    src: url("MixModernSolid.ttf") format("truetype");
+}
+
+body{
+    background-color: beige;
+    display: block;
+    font-family: 'MixModernSolid';
+    font-size: xx-large;
+    text-align: center;
+}
+
+a {
+    text-decoration: none;
+    color: black;
+}
+
+img {
+    width: 30%;
+}

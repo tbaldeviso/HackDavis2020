@@ -40,7 +40,7 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
             'Content-Type': 'text/html'
           });
 
-          res.write('<!DOCTYPE HTML><html><body><link rel="stylesheet" type="text/css" href="css/style.css" />');
+          res.write('<!DOCTYPE HTML><html><body><link rel="stylesheet" type="text/css" href="css/uploadstyle.css" />');
       
           // Base64 the image so we can display it on the page
           res.write('<img width=200 class="center" src="' + base64Image(req.file.path) + '"><br>');
@@ -71,7 +71,7 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
           // Delete file (optional)
           fs.unlinkSync(req.file.path);
       
-          res.end('<br><a href="javascript:history.back()">Go Back</a></body></html>');
+          res.end('<br><br><a href="javascript:history.back()">Go Back</a></body></html>');
   })
   .catch(err => {
       console.error('ERROR:', err);
@@ -83,7 +83,7 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
 app.use('/css',express.static(__dirname +'/css'));
 
 app.listen(8080);
-console.log('Server Started');
+console.log('Server Started in https://localhost:8080');
 
 // Turn image into Base64 so we can display it easily
 
