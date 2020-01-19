@@ -8,7 +8,7 @@ var upload = multer({dest: 'uploads/'});
 // Set up auth
 var vision = require('@google-cloud/vision');
 const client = new vision.ImageAnnotatorClient({
-    keyFilename: '../key.json'
+    keyFilename: '../Hack Davis 2020-6d0daaf83738.json'
 });
 
 var app = express();
@@ -16,7 +16,7 @@ var app = express();
 // Simple upload form
 var form = '<!DOCTYPE HTML><html><body>' +
   `<link rel="stylesheet" type="text/css" href="css/style.css" />`+
-  "<h1>Recycle Buddy</h1>" +
+  "<h1>Waste Bud</h1>" +
   `<span>Upload an image of waste to be categorized!</span>` +
   "<form method='post' action='/upload' enctype='multipart/form-data'>" +
   "<div><input type='file' name='image'/></div>" +
@@ -42,10 +42,10 @@ app.post('/upload', upload.single('image'), function(req, res, next) {
             'Content-Type': 'text/html'
           });
 
-          res.write('<!DOCTYPE HTML><html><body><link rel="stylesheet" type="text/css" href="css/uploadstyle.css" />');
-      
+          res.write(`<!DOCTYPE HTML><html><body><link rel="stylesheet" type="text/css" href="css/uploadstyle.css" /><h1>Waste Bud</h1>`);
+
           // Base64 the image so we can display it on the page
-          res.write('<img width=200 class="center" src="' + base64Image(req.file.path) + '"><br>');
+          res.write('<img width=150 class="center" src="' + base64Image(req.file.path) + '"><br>');
 
           // List of regex per category
           const recycleList = [
